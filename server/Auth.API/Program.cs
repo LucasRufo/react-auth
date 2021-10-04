@@ -1,7 +1,10 @@
+using Auth.API.Configurations;
 using Auth.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.ResolveDependencies();
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
