@@ -1,8 +1,7 @@
-using Microsoft.OpenApi.Models;
+using Auth.Infra.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
@@ -10,9 +9,11 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Auth.API", Version = "v1" });
 });
 
+var connectionString = builder.Configuration.GetConnectionString("ConnectionStrings");
+builder.Services.AddDbContext<ApplicationContext>(m => m.UseSqlServer(connectionString));
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

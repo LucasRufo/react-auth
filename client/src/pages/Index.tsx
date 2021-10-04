@@ -9,7 +9,7 @@ function Index() {
 						<input className="rounded-sm focus:ring-1 focus:ring-indigo-200" type="text" name="email" id="email" />
 					</div>
 					<div className="flex flex-col mt-3">
-						<label htmlFor="password">Password</label>
+						<label htmlFor="password">Senha</label>
 						<input className="rounded-sm focus:ring-1 focus:ring-indigo-200" type="password" name="password" id="password" />
 					</div>
 					<div className="flex justify-center mt-5">
