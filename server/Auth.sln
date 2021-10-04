@@ -5,7 +5,12 @@ VisualStudioVersion = 17.0.31717.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.API", "Auth.API\Auth.API.csproj", "{B8C1514C-C846-4D5D-A92B-F18187B1C908}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Infra", "Auth.Infra\Auth.Infra.csproj", "{7DCD63B5-90A6-40F1-BF24-CEABF6BD2C6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth.Infra", "Auth.Infra\Auth.Infra.csproj", "{7DCD63B5-90A6-40F1-BF24-CEABF6BD2C6C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sql", "sql", "{C475BB4F-B030-4BAB-827F-B5D64FB30F6F}"
+	ProjectSection(SolutionItems) = preProject
+		user.sql = user.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

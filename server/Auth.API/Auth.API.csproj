@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Auth.Infra\Auth.Infra.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Configurations\" />
-  </ItemGroup>
-
 </Project>
