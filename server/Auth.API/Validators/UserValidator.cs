@@ -1,10 +1,10 @@
-﻿using Auth.Infra.Entities;
+﻿using Auth.API.DTOs;
 
 namespace Auth.API.Validators;
 
-public class UserValidator : IValidator<User>
+public class UserValidator : IValidator<UserDto>
 {
-    public IDictionary<string, string> Validate(User entity)
+    public IDictionary<string, string> Validate(UserDto entity)
     {
         var errors = new Dictionary<string, string>();
 

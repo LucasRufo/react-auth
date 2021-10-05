@@ -16,14 +16,9 @@ public class User
     {
         Id = Guid.NewGuid();
         Email = email;
-        Password = password;
+        Password = BC.HashPassword(password);
     }
 
-    internal void HashPassword()
-    {
-        if (string.IsNullOrEmpty(Password))
-            throw new ArgumentNullException(nameof(Password));
-
-        Password = BC.HashPassword(Password);
-    }
+    public bool CheckPassword(string password) => BC.Verify(password, Password);
+    
 }
