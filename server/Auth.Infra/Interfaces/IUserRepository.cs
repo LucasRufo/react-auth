@@ -4,6 +4,6 @@ namespace Auth.Infra.Interfaces;
 
 public interface IUserRepository
 {
-    Task Add(User user);
-    Task<User> GetByEmail(string email);
+    Task AddAsync(User user);
+    Task<User> GetByEmailAsync(string email);
 }

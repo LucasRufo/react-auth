@@ -28,7 +28,7 @@ public class UserController : ControllerBase
 
         var userEntity = new User(user.Email, user.Password);
 
-        await _userRepository.Add(userEntity);
+        await _userRepository.AddAsync(userEntity);
 
         return Ok(user);
     }

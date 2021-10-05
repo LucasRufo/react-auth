@@ -20,7 +20,7 @@ public class AuthController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(UserDto user)
     {
-        var userEntity = await _userRepository.GetByEmail(user.Email);
+        var userEntity = await _userRepository.GetByEmailAsync(user.Email);
 
         if (userEntity is null) return NotFound();
 
@@ -28,6 +28,6 @@ public class AuthController : ControllerBase
 
         var token = _tokenService.GenerateToken(userEntity);
 
-        return Ok(new { access_token = token });
+        return Ok(new { access_token = token, expiration = DateTime.UtcNow.AddHours(2) });
     }
 }

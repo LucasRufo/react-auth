@@ -14,12 +14,12 @@ public class UserRepository : IUserRepository
         _contexto = context;
     }
 
-    public async Task Add(User user)
+    public async Task AddAsync(User user)
     {
         _contexto.User.Add(user);
         await _contexto.SaveChangesAsync();
     }
 
-    public async Task<User> GetByEmail(string email) 
+    public async Task<User> GetByEmailAsync(string email) 
         => await _contexto.User.FirstOrDefaultAsync(m => m.Email == email);
 }
