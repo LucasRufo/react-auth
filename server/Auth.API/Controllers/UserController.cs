@@ -18,14 +18,14 @@ public class UserController : ControllerBase
         _validator = new UserValidator();
     }
 
-    public IActionResult Post(User user)
+    public async Task<IActionResult> Post(User user)
     {
         var errors = _validator.Validate(user);
 
         if (errors.Any())
             return BadRequest(errors);
 
-        _userRepository.AddUser(user);
+        await _userRepository.AddUser(user);
 
         return Ok(user);
     }

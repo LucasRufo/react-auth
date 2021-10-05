@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "Auth.API", Version = "v1" });
 });
 
-var connectionString = builder.Configuration.GetConnectionString("ConnectionStrings");
+var connectionString = builder.Configuration.GetConnectionString("AppDatabase");
 builder.Services.AddDbContext<ApplicationContext>(m => m.UseSqlServer(connectionString));
 
 var app = builder.Build();

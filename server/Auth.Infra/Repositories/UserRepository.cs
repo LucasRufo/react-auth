@@ -2,6 +2,7 @@
 using Auth.Infra.Entities;
 using Auth.Infra.Interfaces;
 
+
 namespace Auth.Infra.Repositories;
 
 public class UserRepository : IUserRepository
@@ -15,6 +16,7 @@ public class UserRepository : IUserRepository
 
     public async Task AddUser(User user)
     {
+        user.HashPassword();
         _contexto.User.Add(user);
         await _contexto.SaveChangesAsync();
     }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using BC = BCrypt.Net.BCrypt;
 
 namespace Auth.Infra.Entities;
 
@@ -16,5 +17,13 @@ public class User
         Id = Guid.NewGuid();
         Email = email;
         Password = password;
+    }
+
+    internal void HashPassword()
+    {
+        if (string.IsNullOrEmpty(Password))
+            throw new ArgumentNullException(nameof(Password));
+
+        Password = BC.HashPassword(Password);
     }
 }
