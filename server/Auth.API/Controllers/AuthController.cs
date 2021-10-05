@@ -28,6 +28,6 @@ public class AuthController : ControllerBase
 
         var token = _tokenService.GenerateToken(userEntity);
 
-        return Ok(token);
+        return Ok(new { access_token = token });
     }
 }
