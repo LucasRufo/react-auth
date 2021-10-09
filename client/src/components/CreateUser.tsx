@@ -9,13 +9,13 @@ export default function CreateUser() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
 
   async function createUser(user: User) {
     try {
       setLoading(true);
 
-      await api.post('user', user);
+      await api.post('/user', user);
 
       toast.success('Usuário criado com sucesso', {
         position: "top-right",

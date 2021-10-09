@@ -1,4 +1,5 @@
 import axios, { AxiosError } from "axios";
+import { history } from "../App";
 
 const API_URL = import.meta.env.VITE_API_URL as string ?? '';
 
@@ -11,8 +12,11 @@ api.interceptors.response.use(function (response) {
 }, function (error: AxiosError) {
   
   console.log(error)
+  
   if(error.code === '401') {
-    //sign out
+    localStorage.removeItem('token');
+
+    history.push('/');
   }
 
   return Promise.reject(error);

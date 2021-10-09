@@ -28,6 +28,6 @@ public class AuthController : ControllerBase
 
         var token = _tokenService.GenerateToken(userEntity);
 
-        return Ok(new { access_token = token, expiration = DateTime.UtcNow.AddHours(2) });
+        return Ok(new { AccessToken = token, Expiration = DateTime.UtcNow.AddHours(2), UserEmail = user.Email });
     }
 }

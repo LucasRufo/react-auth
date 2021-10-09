@@ -1,25 +1,31 @@
-import React from "react";
+import { createBrowserHistory } from "history";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
+  Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 
 import Index from "./pages/Index"
 
+export const history = createBrowserHistory();
+
+history
+
 function App() {
   return (
-    <MainContainer>
-      <Router>
-        <Switch>
-          <Route path="/">
-            <Index />
-          </Route>
-        </Switch>
-      </Router>
-    </MainContainer>
+    <Router history={history}>
+      <MainContainer>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/">
+              <Index />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </MainContainer>
+    </Router>
   )
 }
 
