@@ -6,12 +6,11 @@ import {
   Route,
 } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
+import Authenticated from "./pages/Authenticated";
 
 import Index from "./pages/Index"
 
 export const history = createBrowserHistory();
-
-history
 
 function App() {
   return (
@@ -19,6 +18,9 @@ function App() {
       <MainContainer>
         <BrowserRouter>
           <Switch>
+            <Route path="/authenticated">
+              <Authenticated />
+            </Route>
             <Route path="/">
               <Index />
             </Route>

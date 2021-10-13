@@ -24,7 +24,7 @@ public class AuthController : ControllerBase
 
         if (userEntity is null) return NotFound();
 
-        if (userEntity.CheckPassword(user.Email)) return BadRequest(new Dictionary<string, string>() { { nameof(userEntity.Password), "Senha inválida" } });
+        if (userEntity.CheckPassword(user.Password) is false) return BadRequest(new Dictionary<string, string>() { { nameof(userEntity.Password), "Senha inválida" } });
 
         var token = _tokenService.GenerateToken(userEntity);
 

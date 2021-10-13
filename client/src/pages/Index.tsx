@@ -7,16 +7,14 @@ export default function Index() {
 		<main className="h-screen flex items-center justify-center">
 			<div className="w-[600px] h-[500px] bg-indigo-100 rounded-md flex flex-col items-center justify-center">
 				<div className="w-full max-w-sm">
-					<Router>
-						<Switch>
-							<Route path="/create">
-								<CreateUser/>
-							</Route>
-							<Route path="/">
-								<Login/>
-							</Route>
-						</Switch>
-					</Router >
+					<Switch>
+						<Route path="/create">
+							<CreateUser />
+						</Route>
+						<Route path="/">
+							<Login />
+						</Route>
+					</Switch>
 				</div>
 			</div>
 		</main >

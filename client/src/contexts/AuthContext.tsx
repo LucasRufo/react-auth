@@ -19,31 +19,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const isAuthenticated = !!userEmail;
 
   const signIn = async (user: User) => {
-    try {
-      const { data } = await api.post<any>('/auth', user);
+    const { data } = await api.post<any>('/auth', user);
 
-      localStorage.setItem('token', data.AccessToken);
+    localStorage.setItem('token', data.accessToken);
 
-      api.defaults.headers['Authorization'] = `Bearer ${data.AccessToken}`;
+    api.defaults.headers['Authorization'] = `Bearer ${data.accessToken}`;
 
-      setUserEmail(data.UserEmail);
-
-      history.push('/authenticated');
-    }
-    catch (error) {
-      toast.error('Email ou senha inválidos', {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        progress: undefined,
-      });
-    }
+    setUserEmail(data.userEmail);
   }
 
   const signOut = () => {
     localStorage.removeItem('token');
-  
+
     history.push('/');
   }
 
@@ -55,7 +42,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={ AuthContextValue }>
+    <AuthContext.Provider value={AuthContextValue}>
       {children}
     </AuthContext.Provider>
   )
