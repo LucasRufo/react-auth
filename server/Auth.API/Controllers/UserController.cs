@@ -2,7 +2,9 @@
 using Auth.API.Validators;
 using Auth.Infra.Entities;
 using Auth.Infra.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Auth.API.Controllers;
 
@@ -18,6 +20,17 @@ public class UserController : ControllerBase
         _validator = new UserValidator();
     }
 
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> GetGuid()
+    {
+        var userEntity = await _userRepository.GetByEmailAsync(ReadClaimValue("Email"));
+
+        if (userEntity is null) return NotFound();
+
+        return Ok(new { Guid = Guid.NewGuid() });
+    }
+
     [HttpPost]
     public async Task<IActionResult> Post(UserDto user)
     {
@@ -31,5 +44,17 @@ public class UserController : ControllerBase
         await _userRepository.AddAsync(userEntity);
 
         return Ok(user);
+    }
+
+    private string ReadClaimValue(string claim)
+    {
+        ClaimsIdentity identity = HttpContext.User.Identity as ClaimsIdentity;
+
+        if (identity != null)
+        {
+            return identity.FindFirst(claim)?.Value;
+        }
+
+        return "";
     }
 }
